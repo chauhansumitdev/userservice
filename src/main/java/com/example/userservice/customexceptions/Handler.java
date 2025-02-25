@@ -14,7 +14,7 @@ public class Handler {
     public ResponseEntity<ResponseAuth> handler(Exception e){
         ResponseAuth responseAuth = new ResponseAuth();
         responseAuth.setMessage(e.getMessage());
-        return  new ResponseEntity<>(responseAuth, HttpStatus.UNAUTHORIZED);
+        return  new ResponseEntity<>(responseAuth, HttpStatus.BAD_REQUEST);
     }
 
 }

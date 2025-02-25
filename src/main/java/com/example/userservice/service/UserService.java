@@ -185,7 +185,7 @@ public class UserService {
 
         ResponseAuth user = authResolver.verifyToken(token.substring(7));
 
-        if(user.getRole().equals("ADMIN")){
+        if(user.getRole().equals("ADMIN") && !orderStatus.getStatus().equals("CANCELLED")){
 
             String status = orderStatus.getStatus();
 
@@ -198,6 +198,8 @@ public class UserService {
                 authResolver.updateOrder(orderStatus, orderid);
             }
 
+            throw new Exception("CANNOT UPDATE ORDER");
+        }else{
             throw new Exception("CANNOT UPDATE ORDER");
         }
 
