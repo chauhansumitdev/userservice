@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -19,15 +15,14 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank
+    @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank
+    @Column(name = "last_name")
     private String lastName;
 
-    @NotBlank
     @Email
-    @Column(unique = true)
+    @Column(name = "email")
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -1,7 +1,6 @@
 package com.example.userservice.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -18,12 +17,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank
-    @Column(unique = true)
+    @Column(name = "user_name") // doubt cannot add unique == true? it throws exception whenever the entity is updated
     private String userName;
 
-    @NotBlank
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "role")
+    private String role;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")

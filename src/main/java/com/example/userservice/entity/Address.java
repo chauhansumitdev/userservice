@@ -15,9 +15,9 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank
+    @Column(name = "street")
     private String street;
 
-    @NotBlank
+    @Column(name = "city")
     private String city;
 }
